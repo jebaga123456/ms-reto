@@ -6,12 +6,13 @@ import { CustomInjectable } from "src/comics/common/injectable";
 import { ComicRepository } from "src/comics/domain/repository/comic.repository";
 import { MetadataEntity } from "src/comics/domain/entities/metadata.entity";
 import { SwapiCacheEntity } from "src/comics/domain/entities/swapicache.entity";
-
+import { ConfigService } from '@nestjs/config';
 
 
 @CustomInjectable()
 export  class ComicDBRepository implements ComicRepository {
 
+  constructor(private configService: ConfigService) {}
     async create(key: string, data: any): Promise<void> {
         const documentClient = this.getDocumentClient();
 
@@ -62,8 +63,8 @@ export  class ComicDBRepository implements ComicRepository {
     private getDocumentClient(): DynamoDBDocumentClient {
         const config = {
           credentials: {
-            accessKeyId: 'acceskey',
-            secretAccessKey: 'secreto',
+            accessKeyId: this.configService.get<string>('ACCESS_KEY'),
+            secretAccessKey: this.configService.get<string>('SECRET'),
           },
           region: 'us-east-2',
         };
