@@ -61,10 +61,13 @@ export  class ComicDBRepository implements ComicRepository {
       }
 
     private getDocumentClient(): DynamoDBDocumentClient {
-        const config = {/*
-                    credentials
-          },          
-          */
+        const config = {
+            credentials: {
+            accessKeyId: this.configService.get<string>('ACCESS_KEY'),
+            secretAccessKey: this.configService.get<string>('SECRET'),
+          },
+          region: this.configService.get<string>('REGION'),
+        
         };
         const client = new DynamoDBClient(config);
     
