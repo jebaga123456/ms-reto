@@ -11,7 +11,7 @@ This is a **NestJS REST API** deployed on **AWS Lambda** using the **Serverless 
 
 ## 🌐 Swagger Documentation
 
-Access the full interactive API documentation:
+Access the full interactive API documentations:
 
 🔗 [Swagger UI](https://4pgq95yfyh.execute-api.us-east-2.amazonaws.com/dev/reto/docs)
 
@@ -21,7 +21,7 @@ Access the full interactive API documentation:
 
 ### Combinate Endpoint
 
-Use the following `curl` command to call the `/combinate` endpoint:
+Use the following `curl` command to call the `/combinate` endpoint :
 
 ```bash
 curl --location 'https://4pgq95yfyh.execute-api.us-east-2.amazonaws.com/dev/reto/combinate/1/1' \
@@ -36,14 +36,15 @@ Use the following `curl` command to call the `/save` endpoint:
 curl --location 'https://4pgq95yfyh.execute-api.us-east-2.amazonaws.com/dev/reto/save' \
 --header 'Content-Type: application/json' \
 --data '{
- "comicId": "combinate-5-5",
+ "comicId": "combinate-1-1",
  "name" : "metadat22224444a",
  "description" : "este es un producto22224444"
+
 }'
 ```
 ### History Endpoint
 
-Use the following `curl` command to call the `/history` endpoint:
+Use the following `curl` command to call the `/history?page=1` endpoint:
 
 ```bash
 curl --location 'https://4pgq95yfyh.execute-api.us-east-2.amazonaws.com/dev/reto/history?page=1' \
