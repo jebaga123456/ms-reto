@@ -60,11 +60,10 @@ export  class ComicDBRepository implements ComicRepository {
       }
 
     private getDocumentClient(): DynamoDBDocumentClient {
-        //TO-DO mover valores a variables de entorno
         const config = {
           credentials: {
-            accessKeyId: 'AKIAYTBWJTVBBEY7GO6X',
-            secretAccessKey: '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',
+            accessKeyId: 'acceskey',
+            secretAccessKey: 'secreto',
           },
           region: 'us-east-2',
         };
