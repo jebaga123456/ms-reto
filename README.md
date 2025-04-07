@@ -26,7 +26,7 @@ Use the following `curl` command to call the `/combinate` endpoint:
 ```bash
 curl --location 'https://4pgq95yfyh.execute-api.us-east-2.amazonaws.com/dev/reto/combinate/1/1' \
 --header 'Content-Type: application/json'
-
+```
 
 ### Save Endpoint
 
@@ -40,7 +40,7 @@ curl --location 'https://4pgq95yfyh.execute-api.us-east-2.amazonaws.com/dev/reto
  "name" : "metadat22224444a",
  "description" : "este es un producto22224444"
 }'
-
+```
 ### History Endpoint
 
 Use the following `curl` command to call the `/history` endpoint:
@@ -48,3 +48,4 @@ Use the following `curl` command to call the `/history` endpoint:
 ```bash
 curl --location 'https://4pgq95yfyh.execute-api.us-east-2.amazonaws.com/dev/reto/history?page=1' \
 --header 'Content-Type: application/json'
+```
