@@ -66,7 +66,7 @@ export  class ComicDBRepository implements ComicRepository {
             accessKeyId: this.configService.get<string>('ACCESS_KEY'),
             secretAccessKey: this.configService.get<string>('SECRET'),
           },
-          region: 'us-east-2',
+          region: this.configService.get<string>('REGION'),
         };
         const client = new DynamoDBClient(config);
     
