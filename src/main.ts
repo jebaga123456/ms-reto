@@ -4,6 +4,7 @@ import { Callback, Context, Handler } from 'aws-lambda';
 import  serverlessExpress from '@codegenie/serverless-express';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { ValidationPipe } from '@nestjs/common';
+import { AppLogger } from './comics/infraestructure/logger/logger.service';
 
 let server: Handler;
 
@@ -15,6 +16,7 @@ async function bootstrap(): Promise<Handler> {
     .build();
 
   app.useGlobalPipes(new ValidationPipe());
+  app.useLogger(app.get(AppLogger))
 
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('reto/docs', app, document);
@@ -23,7 +25,9 @@ async function bootstrap(): Promise<Handler> {
 
   const expressApp = app.getHttpAdapter().getInstance();
   return serverlessExpress({ app: expressApp });
+
 }
+
 
 export const handler: Handler = async (
   event: any,

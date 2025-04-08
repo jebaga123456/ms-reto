@@ -1,12 +1,13 @@
 import { CustomInjectable } from "src/comics/common/injectable";
 import { ComicRepository } from "src/comics/domain/repository/comic.repository";
-
+import { AppLogger } from "src/comics/infraestructure/logger/logger.service";
 
 @CustomInjectable()
 export class HistoryService {
-  constructor(private readonly comicRepository: ComicRepository) {}
+  constructor(private readonly comicRepository: ComicRepository, private readonly logger : AppLogger) {}
   
-  async getHistory(page: number) {
+  async getHistory(page: number) {    
+    this.logger.log(`HistoryService.getHistory  init page: ${page}`);
 
     const infoRes =  await this.comicRepository.getAllCache();
     const metaRes = await this.comicRepository.getAllMetadata();

@@ -1,13 +1,14 @@
 import axios from "axios";
 import { CustomInjectable } from "src/comics/common/injectable";
 import { ComicRepository } from "src/comics/domain/repository/comic.repository";
-
+import { AppLogger } from "src/comics/infraestructure/logger/logger.service";
 
 @CustomInjectable()
 export class ComicService {
-  constructor(private readonly comicRepository: ComicRepository) {}
+  constructor(private readonly comicRepository: ComicRepository, private readonly logger : AppLogger) {}
 
   async combinate(peopleId: string, weatherId: string): Promise<object> {
+    this.logger.log(`ComicService.combinate  peopleId: ${peopleId} , weatherId: ${weatherId}`);
 
     const cacheKey = `combinate-${peopleId}-${weatherId}`;
     const cached = await this.comicRepository.getItem(cacheKey);
